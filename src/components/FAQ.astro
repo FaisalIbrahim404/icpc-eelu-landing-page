@@ -1,0 +1,27 @@
+---
+import { createT } from "../lib/i18n.js";
+const { lang = "ar" } = Astro.props;
+const t = createT(lang);
+const items = t("faq.items", []);
+---
+
+<section
+  id="الأسئلة-الشائعة"
+  class="mx-auto max-w-screen-xl px-4 py-[var(--space-6)]"
+>
+  <h2 class="leading-[var(--leading-snug)] font-semibold text-[var(--text-h2)]">
+    {t("faq.title")}
+  </h2>
+  <div class="divide-border-subtle border-border-subtle token-rounded-lg mt-4 divide-y border">
+    {
+      items.map((qa) => (
+        <details class="group p-4">
+          <summary class="text-foreground-primary cursor-pointer font-semibold text-[var(--text-body)]">
+            {qa.q}
+          </summary>
+          <div class="text-foreground-secondary mt-2">{qa.a}</div>
+        </details>
+      ))
+    }
+  </div>
+</section>

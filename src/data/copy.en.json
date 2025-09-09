@@ -1,0 +1,53 @@
+{
+  "site": {
+    "title": "ICPC EELU — Fayoum Center",
+    "description": "Join the ICPC EELU community to master algorithms, build teamwork, and compete through ECPC and ACPC on the path to the ICPC World Finals."
+  },
+  "nav": {
+    "pathway": "Pathway",
+    "events": "Events",
+    "getStarted": "Get Started",
+    "sponsors": "Sponsors"
+  },
+  "hero": {
+    "title": "Compete. Learn. Advance.",
+    "subtitle": "Join the ICPC EELU community to master algorithms, build teamwork, and compete through ECPC and ACPC on the path to the ICPC World Finals.",
+    "primary": "Join the Community",
+    "secondary": "See Events & Timeline"
+  },
+  "overview": {
+    "text": "The International Collegiate Programming Contest (ICPC) is a multi-tier, team-based competition where teams of three solve algorithmic problems under time pressure."
+  },
+  "pathway": {
+    "label": "ECPC (Egypt) → ACPC (Regional) → ICPC World Finals"
+  },
+  "getStarted": {
+    "steps": ["Join our channels", "Add key dates", "Start training and form a team of three"]
+  },
+  "resources": {
+    "title": "Resources",
+    "items": [
+      { "title": "Coming soon", "url": "#" },
+      { "title": "Coming soon", "url": "#" },
+      { "title": "Coming soon", "url": "#" }
+    ],
+    "button": "Explore resources"
+  },
+  "support": {
+    "eelu": "Proudly supported by the Egyptian E‑Learning University (EELU)."
+  },
+  "sponsors": {
+    "line": "Partner with us to support talented students.",
+    "button": "Sponsor Us"
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      { "q": "Who is eligible?", "a": "Details coming soon." },
+      { "q": "Are teams of three?", "a": "Yes, ICPC teams are three students." },
+      { "q": "What is the time commitment?", "a": "Details coming soon." },
+      { "q": "Where do I start?", "a": "Start with Get Started and Resources sections." }
+    ]
+  },
+  "statuses": { "open": "Open", "soon": "Soon", "closed": "Closed" }
+}

@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* Semantic tokens (colors) */
+@theme {
+  /* These are “aliases” that produce utilities like bg-surface, text-foreground-primary, etc. */
+  --color-background-primary: #0a0a0a; /* dark default */
+  --color-background-secondary: #171717;
+  --color-background-tertiary: #262626;
+  --color-surface: #171717;
+  --color-foreground-primary: #fafafa;
+  --color-foreground-secondary: #a3a3a3;
+  --color-foreground-muted: #737373;
+  --color-accent-primary: #3b82f6; /* blue-500 */
+  --color-accent-foreground: #0a0a0a;
+  --color-link: #93c5fd; /* blue-300 */
+  --color-border-default: #404040;
+  --color-border-subtle: #262626;
+  --color-border-accent: #1d4ed8; /* blue-700 */
+  --color-highlight: #172554; /* blue-950 */
+
+  --color-button-primary-bg: #3b82f6;
+  --color-button-primary-foreground: #0a0a0a;
+  --color-button-secondary-bg: #404040;
+  --color-button-secondary-foreground: #fafafa;
+
+  /* Status colors (7B): مفتوح=green, قريباً=blue, مغلق=red */
+  --color-status-open: #22c55e; /* green-500 */
+  --color-status-soon: #3b82f6; /* blue-500 */
+  --color-status-closed: #ef4444; /* red-500 */
+
+  /* Typography tokens (sizes/line-heights as variables for consistency) */
+  --font-sans-en:
+    "Noto Sans",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  --font-sans-ar:
+    "Noto Sans Arabic",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  --text-h1: 48px;
+  --text-h2: 36px;
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-body: 16px;
+  --text-body-l: 18px;
+  --text-small: 14px;
+  --text-caption: 12px;
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Light theme (scaffold only; not visible yet). Activate later with data-theme="light" */
+:root[data-theme="light"] {
+  --color-background-primary: #fafafa;
+  --color-background-secondary: #f5f5f5;
+  --color-background-tertiary: #e5e5e5;
+  --color-surface: #ffffff;
+  --color-foreground-primary: #0a0a0a;
+  --color-foreground-secondary: #525252;
+  --color-foreground-muted: #737373;
+  --color-accent-primary: #2563eb; /* blue-600 */
+  --color-accent-foreground: #fafafa;
+  --color-link: #1d4ed8; /* blue-700 */
+  --color-border-default: #d4d4d4;
+  --color-border-subtle: #e5e5e5;
+  --color-border-accent: #93c5fd; /* blue-300 */
+  --color-highlight: #eff6ff; /* blue-50 */
+
+  --color-button-primary-bg: #2563eb;
+  --color-button-primary-foreground: #fafafa;
+  --color-button-secondary-bg: #e5e5e5;
+  --color-button-secondary-foreground: #0a0a0a;
+}
+
+/* Global resets/utilities */
+:root,
+html,
+body {
+  height: 100%;
+}
+body {
+  /* Dark-first base */
+  background: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+  font-family: var(--font-sans-ar);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility helpers for tokens where no Tailwind alias exists yet */
+.token-rounded-sm {
+  border-radius: var(--radius-sm);
+}
+.token-rounded-md {
+  border-radius: var(--radius-md);
+}
+.token-rounded-lg {
+  border-radius: var(--radius-lg);
+}
+.token-shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.token-shadow-md {
+  box-shadow: var(--shadow-md);
+}
+.token-shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Focus styles for a11y */
+:where(a, button, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--color-border-accent);
+  outline-offset: 2px;
+}

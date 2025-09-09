@@ -1,0 +1,11 @@
+{
+  "channels": {
+    "whatsapp": "#"
+  },
+  "sponsor_cta_url": "#",
+  "brand": {
+    "brand_logo": "/images/brand/brand-logo.svg",
+    "icpc_logo": "/images/brand/icpc-logo.svg",
+    "eelu_logo": "/images/brand/eelu-logo-circle-dark.png"
+  }
+}

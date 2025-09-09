@@ -1,0 +1,32 @@
+[
+  {
+    "id": "training-reg-open",
+    "title_ar": "فتح باب التسجيل للتدريب",
+    "title_en": "Training Registration Opens",
+    "date_iso": "2025-10-05",
+    "status": "soon",
+    "description_ar": "سجّل الآن لتبدأ رحلة التدريب.",
+    "description_en": "Register now to start the training journey.",
+    "cta_url": null
+  },
+  {
+    "id": "training-starts",
+    "title_ar": "بداية التدريب",
+    "title_en": "Training Starts",
+    "date_iso": "2025-10-15",
+    "status": "soon",
+    "description_ar": "انطلاق الجلسات الأولى.",
+    "description_en": "First sessions kick off.",
+    "cta_url": null
+  },
+  {
+    "id": "ecpc-reg",
+    "title_ar": "فتح باب التسجيل لـ ECPC",
+    "title_en": "ECPC Registration Opens",
+    "date_iso": null,
+    "status": "soon",
+    "description_ar": "تابعنا للمزيد من التفاصيل.",
+    "description_en": "Stay tuned for details.",
+    "cta_url": null
+  }
+]

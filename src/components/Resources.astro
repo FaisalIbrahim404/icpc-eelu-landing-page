@@ -1,0 +1,29 @@
+---
+import { createT } from "../lib/i18n.js";
+const { lang = "ar" } = Astro.props;
+const t = createT(lang);
+const items = t("resources.items", []);
+---
+
+<section id="المصادر" class="mx-auto max-w-screen-xl px-4 py-[var(--space-6)]">
+  <h2 class="leading-[var(--leading-snug)] font-semibold text-[var(--text-h2)]">
+    {t("resources.title")}
+  </h2>
+  <ul class="mt-4 space-y-3">
+    {
+      items.map((it) => (
+        <li>
+          <a href={it.url} class="text-link underline-offset-2 hover:underline">
+            {it.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="mt-4">
+    <a
+      href="#"
+      class="token-rounded-md border-border-default inline-flex items-center border px-4 py-2"
+    >{t("resources.button")}</a>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+const { lang = "ar", title = "", description = "" } = Astro.props;
+const isRTL = lang === "ar";
+// const otherLang = lang === 'ar' ? 'en' : 'ar';
+// const otherHref = lang === 'ar' ? '/en/' : '/';
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={isRTL ? "rtl" : "ltr"} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="alternate" hrefLang="ar" href="/" />
+    <link rel="alternate" hrefLang="en" href="/en/" />
+    <link rel="icon" href="/favicon.ico" />
+    <!-- Google Fonts (Noto Sans + Noto Sans Arabic) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head><linkstyles
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  ></linkstyles>
+  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+  <script is:inline>
+  // Theme persistence (dark-first)
+  try {
+    const persisted = localStorage.getItem("theme");
+    if (persisted === "light" || persisted === "dark") {
+      document.documentElement.setAttribute("data-theme", persisted);
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  </script>
+
+  <body class="bg-background-primary text-foreground-primary antialiased">
+    <slot />
+  </body>
+</html>
