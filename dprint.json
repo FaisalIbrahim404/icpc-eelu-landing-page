@@ -1,6 +1,6 @@
 {
   "includes": ["**/*.{toml,yml,yaml}", "**/Dockerfile*", "**/*.dockerfile"],
-  "excludes": ["**/node_modules", "**/dist", "**/*-lock.json"],
+  "excludes": ["**/node_modules", "**/dist", "**/*-lock.*"],
 
   "plugins": [
     "https://plugins.dprint.dev/toml-0.7.0.wasm",
