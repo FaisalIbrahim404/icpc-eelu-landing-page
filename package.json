@@ -15,13 +15,15 @@
     "biome:format": "biome format --write .",
     "dprint": "dprint fmt",
     "dprint:check": "dprint check",
+    "typecheck": "tsc --noEmit",
     "clean:dist": "rimraf dist",
     "clean:modules": "rimraf node_modules",
     "clean:locks": "rimraf pnpm-lock.yaml package-lock.json yarn.lock",
     "clean:caches": "rimraf .turbo .parcel-cache .cache",
     "clean": "pnpm run clean:dist && pnpm run clean:caches",
     "reset": "pnpm run clean && pnpm run clean:modules && pnpm run clean:locks",
-    "check:all": "pnpm run lint && pnpm run format:check && pnpm run dprint:check",
+    "check:all": "pnpm run lint && pnpm run format:check && pnpm run dprint:check && pnpm run biome:check && pnpm run typecheck",
+    "format:all": "pnpm run lint:fix && pnpm run format && pnpm run dprint && pnpm run biome:format",
     "prepare": ""
   },
   "dependencies": {

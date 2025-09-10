@@ -1,8 +1,8 @@
 ---
-import { createT } from "../lib/i18n.js";
-const { lang = "ar" } = Astro.props;
+import { createT } from '../lib/i18n.js';
+const { lang = 'ar' } = Astro.props;
 const t = createT(lang);
-const items = t("resources.items", []);
+const items = t('resources.items', []);
 ---
 
 <section id="المصادر" class="mx-auto max-w-screen-xl px-4 py-[var(--space-6)]">

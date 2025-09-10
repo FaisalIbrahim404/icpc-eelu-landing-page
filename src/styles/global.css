@@ -29,22 +29,9 @@
   --color-status-closed: #ef4444; /* red-500 */
 
   /* Typography tokens (sizes/line-heights as variables for consistency) */
-  --font-sans-en:
-    "Noto Sans",
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
+  --font-sans-en: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-sans-ar:
-    "Noto Sans Arabic",
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
+    "Noto Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --text-h1: 48px;
   --text-h2: 36px;

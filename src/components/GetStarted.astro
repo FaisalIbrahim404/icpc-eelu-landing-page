@@ -1,10 +1,10 @@
 ---
-import "@/styles/global.css";
-import settings from "../data/settings.json";
-import { createT } from "../lib/i18n.js";
-const { lang = "ar" } = Astro.props;
+import '@/styles/global.css';
+import settings from '../data/settings.json';
+import { createT } from '../lib/i18n.js';
+const { lang = 'ar' } = Astro.props;
 const t = createT(lang);
-const steps = t("getStarted.steps", []);
+const steps = t('getStarted.steps', []);
 ---
 
 <section id="ابدأ-الآن" class="mx-auto max-w-screen-xl px-4 py-[var(--space-6)]">

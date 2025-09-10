@@ -1,15 +1,15 @@
 // eslint.config.mjs
-import js from "@eslint/js";
-import astro from "eslint-plugin-astro";
-import jsoncPlugin from "eslint-plugin-jsonc";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import react from "eslint-plugin-react";
-import globals from "globals";
-import jsoncParser from "jsonc-eslint-parser";
-import tseslint from "typescript-eslint";
+import js from '@eslint/js';
+import astro from 'eslint-plugin-astro';
+import jsoncPlugin from 'eslint-plugin-jsonc';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import react from 'eslint-plugin-react';
+import globals from 'globals';
+import jsoncParser from 'jsonc-eslint-parser';
+import tseslint from 'typescript-eslint';
 
 export default [
-  { ignores: ["dist", ".astro", "node_modules", "coverage", ".turbo", ".parcel-cache", ".cache"] },
+  { ignores: ['dist', '.astro', 'node_modules', 'coverage', '.turbo', '.parcel-cache', '.cache'] },
 
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -17,7 +17,7 @@ export default [
 
   // Browser globals for your app/client code (fixes no-undef for document/window/etc.)
   {
-    files: ["src/**/*.{js,jsx,ts,tsx,astro}"],
+    files: ['src/**/*.{js,jsx,ts,tsx,astro}'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -31,11 +31,11 @@ export default [
   // Node globals for config and scripts (avoids no-undef for __dirname, process, etc.)
   {
     files: [
-      "**/*.{config,conf}.{js,ts,cjs,mjs}",
-      "eslint.config.{js,cjs,mjs,ts}",
-      "astro.config.{js,ts,mjs,cjs}",
-      "vite.config.{js,ts,mjs,cjs}",
-      "scripts/**/*.{js,ts}",
+      '**/*.{config,conf}.{js,ts,cjs,mjs}',
+      'eslint.config.{js,cjs,mjs,ts}',
+      'astro.config.{js,ts,mjs,cjs}',
+      'vite.config.{js,ts,mjs,cjs}',
+      'scripts/**/*.{js,ts}',
     ],
     languageOptions: {
       globals: {
@@ -46,36 +46,36 @@ export default [
 
   // React + A11y for JSX/TSX files
   {
-    files: ["**/*.{jsx,tsx}"],
-    plugins: { react, "jsx-a11y": jsxA11y },
+    files: ['**/*.{jsx,tsx}'],
+    plugins: { react, 'jsx-a11y': jsxA11y },
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       ecmaFeatures: { jsx: true },
     },
-    settings: { react: { version: "detect" } },
+    settings: { react: { version: 'detect' } },
     rules: {
       ...react.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
-      "react/react-in-jsx-scope": "off",
+      'react/react-in-jsx-scope': 'off',
     },
   },
 
   // Ensure .astro scripts can parse TS
   {
-    files: ["**/*.astro"],
+    files: ['**/*.astro'],
     languageOptions: {
       parser: astro.parser,
       parserOptions: {
         parser: tseslint.parser,
-        extraFileExtensions: [".astro"],
+        extraFileExtensions: ['.astro'],
       },
     },
   },
 
   // JSON (strict)
   {
-    files: ["**/*.json"],
+    files: ['**/*.json'],
     plugins: { jsonc: jsoncPlugin },
     languageOptions: { parser: jsoncParser },
     rules: {},
@@ -83,7 +83,7 @@ export default [
 
   // JSONC/JSON5 (allow comments and trailing commas)
   {
-    files: ["**/*.jsonc", "**/*.json5"],
+    files: ['**/*.jsonc', '**/*.json5'],
     plugins: { jsonc: jsoncPlugin },
     languageOptions: {
       parser: jsoncParser,

@@ -1,7 +1,7 @@
 ---
-import { computeEventMeta, statusColor, statusLabel } from "../lib/events.js";
+import { computeEventMeta, statusColor, statusLabel } from '../lib/events.js';
 
-const { lang = "ar", event, dict } = Astro.props;
+const { lang = 'ar', event, dict } = Astro.props;
 const meta = computeEventMeta(lang, event, dict);
 const badgeText = statusLabel(lang, event.status, dict);
 const badgeClass = statusColor(event.status);
