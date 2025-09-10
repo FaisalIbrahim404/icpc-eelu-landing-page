@@ -2,7 +2,7 @@ name: Deploy Astro site to Pages (pnpm)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -26,14 +26,15 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: |
-            pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
+      - name: Enable Corepack and activate pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@9 --activate
+
+      - name: Show pnpm version
+        run: pnpm --version
 
       # Use lockfile if present (recommended), else fall back to regular install
       - name: Install dependencies (with lockfile)
