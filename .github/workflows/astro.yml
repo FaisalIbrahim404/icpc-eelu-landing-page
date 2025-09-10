@@ -73,7 +73,7 @@ jobs:
         if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
 
       # Optional: ensure via Corepack (belt-and-suspenders)
       - name: Ensure pnpm via Corepack
