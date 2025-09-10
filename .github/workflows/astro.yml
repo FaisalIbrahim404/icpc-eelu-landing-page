@@ -69,10 +69,17 @@ jobs:
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
 
       - name: Setup pnpm
-        if: steps.detect-package-manager.outputs.manager == 'pnpm'
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         uses: pnpm/action-setup@v3
         with:
           version: 8
+
+      - name: Ensure pnpm via Corepack (fallback)
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
+        run: |
+          corepack enable
+          corepack prepare pnpm@8 --activate
+          pnpm --version
 
       - name: Setup Pages
         id: pages
