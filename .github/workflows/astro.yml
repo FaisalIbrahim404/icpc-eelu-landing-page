@@ -61,25 +61,46 @@ jobs:
             exit 1
           fi
 
-      - name: Setup Node
+      # For pnpm: set up Node WITHOUT cache to avoid setup-node calling pnpm before it's installed
+      - name: Setup Node (pnpm)
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
 
+      # Install pnpm (only when pnpm is the detected manager)
       - name: Setup pnpm
         if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         uses: pnpm/action-setup@v3
         with:
           version: 8
 
-      - name: Ensure pnpm via Corepack (fallback)
+      # Optional: ensure via Corepack (belt-and-suspenders)
+      - name: Ensure pnpm via Corepack
         if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         run: |
           corepack enable
           corepack prepare pnpm@8 --activate
           pnpm --version
+
+      # Cache pnpm store
+      - name: Cache pnpm store
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles(format('{0}/{1}', env.BUILD_PATH, steps.detect-package-manager.outputs.lockfile)) }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      # For npm/yarn: set up Node WITH cache
+      - name: Setup Node (npm/yarn)
+        if: ${{ steps.detect-package-manager.outputs.manager != 'pnpm' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
 
       - name: Setup Pages
         id: pages
