@@ -16,11 +16,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const lang = 'en';
 ---
 
-<BaseLayout
-  lang={lang}
-  title={copy.site.title}
-  description={copy.site.description}
->
+<BaseLayout lang={lang} title={copy.site.title} description={copy.site.description}>
   <Header lang={lang} />
   <main class="text-start">
     <Hero lang={lang} />

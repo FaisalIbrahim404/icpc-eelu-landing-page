@@ -13,7 +13,7 @@ export function createT(locale = 'ar') {
     // Simple dotted path resolution
     const parts = key.split('.');
     let cur = dict;
-    for (const p of parts) cur = (cur && cur[p]) ?? undefined;
+    for (const p of parts) cur = cur?.[p];
     return cur ?? fallback ?? key;
   };
 }

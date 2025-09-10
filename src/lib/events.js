@@ -27,7 +27,7 @@ export function formatDayMonth(locale, iso) {
   return locale === 'ar' ? `${day} ${month}` : `${month} ${day}`;
 }
 
-export function statusLabel(locale, status, dict) {
+export function statusLabel(status, dict) {
   const map = dict?.statuses ?? { open: 'Open', soon: 'Soon', closed: 'Closed' };
   return map[status] ?? status;
 }
@@ -54,5 +54,5 @@ export function statusColor(status) {
 export function computeEventMeta(locale, event, dict) {
   const dateText = formatDayMonth(locale, event.date_iso);
   if (dateText && event.status !== 'closed') return dateText;
-  return statusLabel(locale, event.status, dict);
+  return statusLabel(event.status, dict);
 }

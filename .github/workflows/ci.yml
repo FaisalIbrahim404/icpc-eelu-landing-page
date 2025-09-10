@@ -22,22 +22,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Lint & format checks
-      - name: ESLint
-        run: pnpm run lint # ESLint is the standard JS/TS linter [[3]]
+      - name: ESLint (Astro only)
+        run: pnpm run lint
 
-      - name: Prettier
-        run: pnpm run format:check
+      - name: Prettier check (Astro/CSS)
+        run: pnpm run prettier:check
 
-      - name: dprint
-        run: pnpm run dprint:check
-
-      - name: Biome
+      - name: Biome check (JS/TS/JSON/MD)
         run: pnpm run biome:check
+
+      - name: dprint check (TOML/YAML/Dockerfile)
+        run: pnpm run dprint:check
 
       - name: TypeScript typecheck
         run: pnpm run typecheck
 
-      # Build only after checks pass
       - name: Build
         run: pnpm run build

@@ -10,7 +10,7 @@ const badgeClass = statusColor(event.status);
 <article class="bg-surface border-border-default token-rounded-lg token-shadow-sm border p-6">
   <div class="flex items-center justify-between gap-4">
     <h4 class="text-foreground-primary text-h4)] leading-[var(--leading-snug)] font-semibold">
-      {lang === "ar" ? event.title_ar : event.title_en}
+      {lang === 'ar' ? event.title_ar : event.title_en}
     </h4>
     <span
       class={`inline-flex items-center h-7 px-3 text-sm font-medium token-rounded-md ${badgeClass}`}
@@ -22,14 +22,11 @@ const badgeClass = statusColor(event.status);
     {meta}
   </div>
   <p class="text-foreground-primary mt-3">
-    {lang === "ar" ? event.description_ar : event.description_en}
+    {lang === 'ar' ? event.description_ar : event.description_en}
   </p>
   <div class="mt-4">
-    <a
-      href={event.cta_url}
-      class="text-link underline-offset-2 hover:underline"
-    >
-      {lang === "ar" ? "التفاصيل" : "Details"}
+    <a href={event.cta_url} class="text-link underline-offset-2 hover:underline">
+      {lang === 'ar' ? 'التفاصيل' : 'Details'}
     </a>
   </div>
 </article>
