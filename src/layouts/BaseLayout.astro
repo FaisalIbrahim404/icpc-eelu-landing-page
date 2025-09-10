@@ -1,5 +1,5 @@
 ---
-const { lang = 'ar', title = '', description = '' } = Astro.props;
+const { lang = 'ar', title = '', description = '', class: className = '' } = Astro.props;
 const isRTL = lang === 'ar';
 // const otherLang = lang === 'ar' ? 'en' : 'ar';
 // const otherHref = lang === 'ar' ? '/en/' : '/';
@@ -12,8 +12,8 @@ const isRTL = lang === 'ar';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="alternate" hrefLang="ar" href="/" />
-    <link rel="alternate" hrefLang="en" href="/en/" />
+    <link rel="alternate" hreflang="ar" href="/" />
+    <link rel="alternate" hreflang="en" href="/en/" />
     <link rel="icon" href="/favicon.ico" />
     <!-- Google Fonts (Noto Sans + Noto Sans Arabic) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +35,7 @@ const isRTL = lang === 'ar';
     }
   </script>
 
-  <body class="bg-background-primary text-foreground-primary antialiased">
+  <body class={`bg-background-primary text-foreground-primary antialiased ${className}`}>
     <slot />
   </body>
 

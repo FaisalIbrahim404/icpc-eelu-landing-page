@@ -23,6 +23,11 @@
   --color-button-secondary-bg: #404040;
   --color-button-secondary-foreground: #fafafa;
 
+  /* ICPC brand colors */
+  --color-brand-1: #f7ba31;
+  --color-brand-2: #4c82c3;
+  --color-brand-3: #b23228;
+
   /* Status colors (7B): مفتوح=green, قريباً=blue, مغلق=red */
   --color-status-open: #22c55e; /* green-500 */
   --color-status-soon: #3b82f6; /* blue-500 */
@@ -129,4 +134,10 @@ body {
 :where(a, button, [role='button'], [tabindex]:not([tabindex='-1'])):focus-visible {
   outline: 2px solid var(--color-border-accent);
   outline-offset: 2px;
+}
+
+@layer utilities {
+  .container-center {
+    @apply flex items-center justify-center;
+  }
 }

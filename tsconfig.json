@@ -1,6 +1,6 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*", ".eslintrc.cjs"],
+  "extends": "astro/tsconfigs/base",
+  "include": [".astro/types.d.ts", "**/*", "eslint.config.mjs", "astro.config.*", "src/env.d.ts"],
   "exclude": ["dist"],
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -14,7 +14,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"]
-    }
+      "@layouts/*": ["./src/layouts/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@data/*": ["./src/data/*"]
+    },
+    "types": ["astro/client"]
   }
 }

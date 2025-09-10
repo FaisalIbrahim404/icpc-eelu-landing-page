@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "lint:astro": "eslint \"**/*.astro\"",
     "lint": "pnpm run lint:astro",
@@ -22,7 +22,7 @@
     "clean:locks": "rimraf pnpm-lock.yaml package-lock.json yarn.lock",
     "clean:caches": "rimraf .turbo .parcel-cache .cache",
     "clean": "pnpm run clean:dist && pnpm run clean:caches",
-    "reset": "pnpm run clean && pnpm run clean:modules && pnpm run clean:locks",
+    "reset": "pnpm run clean && pnpm run clean:locks && pnpm run clean:modules",
     "deps:unused": "depcheck",
     "deps:review": "NPM_CHECK_INSTALLER=pnpm npm-check",
     "deps:update:interactive": "NPM_CHECK_INSTALLER=pnpm npm-check -u"

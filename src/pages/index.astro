@@ -1,23 +1,23 @@
 ---
-import Events from '../components/Events.astro';
-import FAQ from '../components/FAQ.astro';
-import Footer from '../components/Footer.astro';
-import GetStarted from '../components/GetStarted.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Overview from '../components/Overview.astro';
-import Pathway from '../components/Pathway.astro';
-import Resources from '../components/Resources.astro';
-import Sponsors from '../components/Sponsors.astro';
-import Support from '../components/Support.astro';
-import copy from '../data/copy.ar.json';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Events from '@components/Events.astro';
+import FAQ from '@components/FAQ.astro';
+import Footer from '@components/layout/Footer.astro';
+import GetStarted from '@components/GetStarted.astro';
+import Navbar from '@components/layout/navbar.astro';
+import Hero from '@components/Hero.astro';
+import Overview from '@components/Overview.astro';
+import Pathway from '@components/Pathway.astro';
+import Resources from '@components/Resources.astro';
+import Sponsors from '@components/Sponsors.astro';
+import Support from '@components/Support.astro';
+import copy from '@data/copy.ar.json';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 const lang = 'ar';
 ---
 
-<BaseLayout lang={lang} title={copy.site.title} description={copy.site.description}>
-  <Header lang={lang} />
+<BaseLayout lang={lang} title={copy.site.title} description={copy.site.description} class="pt-6">
+  <Navbar lang={lang} />
   <main class="text-start">
     <Hero lang={lang} />
     <Events lang={lang} dict={copy} />

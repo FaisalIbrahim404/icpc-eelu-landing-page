@@ -1,0 +1,209 @@
+---
+import Logo from './Logo.astro';
+import { createT } from '@lib/i18n.js';
+
+const { lang = 'ar' } = Astro.props;
+const t = createT(lang);
+const nav = [
+  { label: t('nav.events'), href: '#الفعاليات' },
+  { label: t('nav.pathway'), href: '#المسار' },
+  { label: t('nav.getStarted'), href: '#ابدأ-الآن' },
+  { label: t('nav.sponsors'), href: '#الرعاة' },
+];
+---
+
+<nav
+  id="site-nav"
+  class="bg-background-primary group/nav border-border-subtle fixed top-0 z-40 w-full translate-y-0 border-b transition-transform duration-300 ease-in-out will-change-transform"
+>
+  <div class="mx-auto flex max-w-screen-xl items-center justify-between px-4 py-3">
+    <Logo />
+
+    <!-- Desktop links -->
+    <nav class="hidden items-center gap-4 md:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="text-foreground-secondary hover:text-foreground-primary text-md font-semibold transition-colors"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <!-- Hidden toggles (scaffold only) -->
+      <button class="hidden" aria-label={lang === 'ar' ? 'EN' : 'العربية'} title="Language"
+      ></button>
+      <button class="hidden" aria-label="Theme" title="Theme"></button>
+    </nav>
+
+    <!-- Mobile toggle -->
+    <button
+      id="menu-toggle"
+      class="focus-visible:ring-primary inline-flex size-10 flex-col items-center justify-center gap-1.5 rounded-lg focus:outline-none focus-visible:ring-2 md:hidden"
+      aria-label={lang === 'ar' ? 'فتح القائمة' : 'Open menu'}
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      type="button"
+      title={lang === 'ar' ? 'القائمة' : 'Menu'}
+    >
+      <span class="sr-only">{lang === 'ar' ? 'القائمة' : 'Menu'}</span>
+      <span
+        class="block h-0.5 w-6 origin-center rounded-full bg-current transition-all duration-200 group-data-[menu-open=true]/nav:translate-y-2 group-data-[menu-open=true]/nav:rotate-45"
+      ></span>
+      <span
+        class="block h-0.5 w-6 origin-center rounded-full bg-current transition-all duration-200 group-data-[menu-open=true]/nav:opacity-0"
+      ></span>
+      <span
+        class="block h-0.5 w-6 origin-center rounded-full bg-current transition-all duration-200 group-data-[menu-open=true]/nav:-translate-y-2 group-data-[menu-open=true]/nav:-rotate-45"
+      ></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay + drawer -->
+<div
+  id="mobile-menu"
+  class="group/mobile-menu pointer-events-none fixed inset-0 z-30 opacity-0 transition-opacity duration-200 ease-out data-[open='true']:pointer-events-auto data-[open='true']:opacity-100 md:hidden"
+  aria-hidden="true"
+  data-open="false"
+>
+  <div data-backdrop class="absolute inset-0 bg-black/30 backdrop-blur-[2px] transition-opacity">
+  </div>
+
+  <!-- The sliding panel -->
+  <div
+    class="bg-background-primary absolute top-0 left-0 h-full w-80 max-w-[85vw] -translate-x-full pt-16 shadow-xl transition-transform duration-300 ease-out will-change-transform group-data-[open='true']/mobile-menu:translate-x-0"
+  >
+    <div class="px-4 py-4">
+      <nav class="flex flex-col gap-3">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class="text-foreground-primary/90 hover:text-foreground-primary px-2 py-2 text-lg font-semibold transition-colors"
+              data-menu-close
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- One small client script (TypeScript) for scroll-hide + mobile menu -->
+<script>
+  (() => {
+    const nav = document.getElementById('site-nav') as HTMLElement | null;
+    const menu = document.getElementById('mobile-menu') as HTMLElement | null;
+    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+
+    if (nav && menu && toggle) {
+      let menuOpen = false;
+
+      const setOpen = (open: boolean) => {
+        menuOpen = open;
+        nav.setAttribute('data-menu-open', String(open));
+        menu.setAttribute('data-open', String(open));
+        toggle.setAttribute('aria-expanded', String(open));
+        document.documentElement.classList.toggle('overflow-hidden', open);
+
+        // Update aria-label (basic i18n based on document dir)
+        const isRTL = document.dir === 'rtl';
+        toggle.setAttribute(
+          'aria-label',
+          open ? (isRTL ? 'إغلاق القائمة' : 'Close menu') : isRTL ? 'فتح القائمة' : 'Open menu',
+        );
+      };
+
+      const close = () => setOpen(false);
+      const toggleOpen = () => setOpen(!menuOpen);
+
+      // Toggle button
+      toggle.addEventListener('click', toggleOpen, { passive: true });
+
+      // Backdrop click
+      const backdrop = menu.querySelector('[data-backdrop]') as HTMLElement | null;
+      backdrop?.addEventListener('click', close, { passive: true });
+
+      // Close when clicking any menu link
+      menu.querySelectorAll<HTMLElement>('[data-menu-close]').forEach((el) => {
+        el.addEventListener('click', close, { passive: true });
+      });
+
+      // Close on Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOpen) {
+          close();
+        }
+      });
+
+      // Respect reduced motion
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduce.matches) {
+        nav.style.transition = 'none';
+        menu.style.transition = 'none';
+      }
+
+      // Hide-on-scroll behavior (disabled while menu is open)
+      const hideClass = '-translate-y-full';
+      const showClass = 'translate-y-0';
+      let lastY = window.scrollY || 0;
+      let ticking = false;
+      let hidden = false;
+      const threshold = 8;
+
+      function show() {
+        if (!hidden) return;
+        nav?.classList.remove(hideClass);
+        nav?.classList.add(showClass);
+        hidden = false;
+      }
+
+      function hide() {
+        if (hidden) return;
+        nav?.classList.remove(showClass);
+        nav?.classList.add(hideClass);
+        hidden = true;
+      }
+
+      function update() {
+        if (menuOpen) {
+          show();
+          lastY = window.scrollY || 0;
+          return;
+        }
+
+        const y = Math.max(0, window.scrollY || 0);
+        const delta = y - lastY;
+
+        if (y < 80) {
+          show();
+          lastY = y;
+          return;
+        }
+
+        if (Math.abs(delta) > threshold) {
+          if (delta > 0) hide();
+          else show();
+          lastY = y;
+        }
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            update();
+            ticking = false;
+          });
+        },
+        { passive: true },
+      );
+    }
+  })();
+</script>
