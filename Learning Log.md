@@ -1,11 +1,11 @@
-# Learning Log
-
 ---
 title: Learning Log
 description: A reusable, actionable log to track technologies, libraries, and topics to learn for this repository.
 lastUpdated: 2025-09-12
 owner: [FaisalIbrahim404]
 ---
+
+# Learning Log
 
 ## How to Use This File
 
@@ -69,7 +69,8 @@ owner: [FaisalIbrahim404]
 <summary>Notes</summary>
 
 </details>  
-**Acceptance criteria:**  
+
+**Acceptance criteria: **
 - [ ]  
 - [ ]  
 
