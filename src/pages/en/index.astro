@@ -18,7 +18,9 @@ const lang = 'en';
 
 <BaseLayout lang={lang} title={copy.site.title} description={copy.site.description} class="pt-6">
   <Navbar lang={lang} />
-  <main class="scroll-smooth text-start">
+  <main
+    class="container-center relative flex-col scroll-smooth text-start before:fixed before:top-0 before:left-0 before:z-20 before:h-[80px] before:w-full before:bg-gradient-to-b before:from-black before:to-transparent before:content-[''] after:fixed after:bottom-0 after:left-0 after:z-20 after:h-[80px] after:w-full after:bg-gradient-to-t after:from-black after:to-transparent after:content-['']"
+  >
     <Hero lang={lang} />
     <Events lang={lang} dict={copy} />
     <Overview lang={lang} />
