@@ -9,7 +9,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [react(), partytown()],
+  integrations: [
+    react({
+      include: ['**/react/*'],
+      experimentalReactChildren: true,
+      experimentalDisableStreaming: true,
+    }),
+    partytown(),
+  ],
   // site: 'https://example.com', // TODO: set real domain before production
   output: 'static',
 });

@@ -16,8 +16,9 @@
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@lib/*": ["./src/lib/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"]
     },
-    "types": ["astro/client"]
+    "types": ["astro/client", "react", "react-dom"]
   }
 }
