@@ -1,32 +1,58 @@
 ---
 import { computeEventMeta, statusColor, statusLabel } from '../lib/events.js';
+import ElectricBorder from '@components/ui/ElectricBorder';
 
 const { lang = 'ar', event, dict } = Astro.props;
 const meta = computeEventMeta(lang, event, dict);
-const badgeText = statusLabel(lang, event.status, dict);
+const badgeText = statusLabel(event.status, dict);
 const badgeClass = statusColor(event.status);
+
+const chaosMap = { open: 0.4, soon: 0.2, closed: 0.1 };
 ---
 
-<article class="bg-surface border-border-default token-rounded-lg token-shadow-sm border p-6">
-  <div class="flex items-center justify-between gap-4">
-    <h4 class="text-foreground-primary text-h4)] leading-[var(--leading-snug)] font-semibold">
-      {lang === 'ar' ? event.title_ar : event.title_en}
-    </h4>
-    <span
-      class={`inline-flex items-center h-7 px-3 text-sm font-medium token-rounded-md ${badgeClass}`}
-    >
-      {badgeText}
-    </span>
-  </div>
-  <div class="text-small text-foreground-secondary mt-2">
-    {meta}
-  </div>
-  <p class="text-foreground-primary mt-3">
-    {lang === 'ar' ? event.description_ar : event.description_en}
-  </p>
-  <div class="mt-4">
-    <a href={event.cta_url} class="text-link underline-offset-2 hover:underline">
-      {lang === 'ar' ? 'التفاصيل' : 'Details'}
-    </a>
-  </div>
-</article>
+<ElectricBorder
+  client:only="svelte"
+  color={`var(--color-status-${event.status})`}
+  chaos={chaosMap[event.status]}
+  thickness={2}
+  style={{ borderRadius: 16 }}
+>
+  <article
+    class="flex h-full w-full max-w-xs min-w-2xs flex-col items-start justify-between gap-6 rounded-lg border p-6 py-8 shadow-sm select-none"
+  >
+    <div class="flex w-full flex-col items-start justify-center gap-3">
+      <div class="flex w-full items-center justify-between">
+        <span
+          class={`inline-flex items-center py-1 mb-2 select-none px-3 text-sm font-medium rounded-full ${badgeClass}`}
+        >
+          {badgeText}
+        </span>
+        {meta && <span class="text-small text-foreground-secondary">{meta}</span>}
+      </div>
+      <h4 class="text-foreground-primary text-h4 leading-snug font-semibold">
+        {lang === 'ar' ? event.title_ar : event.title_en}
+      </h4>
+      <p class="text-foreground-primary">
+        {lang === 'ar' ? event.description_ar : event.description_en}
+      </p>
+    </div>
+
+    {
+      event.cta_url != null ? (
+        <a
+          href={event.cta_url}
+          class="bg-accent-primary hover:bg-accent-primary/80 w-full cursor-pointer rounded-md py-1 text-center text-white transition-all select-none"
+        >
+          {lang === 'ar' ? event.label_ar : event.label_en}
+        </a>
+      ) : (
+        <button
+          disabled={!event.action}
+          class="bg-accent-primary hover:bg-accent-primary/80 disabled:hover:bg-accent-primary w-full cursor-pointer rounded-md py-1 text-center text-white transition-all select-none disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {lang === 'ar' ? event.label_ar : event.label_en}
+        </button>
+      )
+    }
+  </article>
+</ElectricBorder>

@@ -36,13 +36,13 @@ export function statusColor(status) {
   // Tokens from Tailwind v4 @theme (7B)
   switch (status) {
     case 'open':
-      return 'bg-[var(--color-status-open)] text-[var(--color-accent-foreground)]';
+      return 'bg-status-open/30 text-[color-mix(in_oklab,var(--color-status-open)_20%,white_80%)]';
     case 'soon':
-      return 'bg-[var(--color-status-soon)] text-[var(--color-accent-foreground)]';
+      return 'bg-status-soon/30 text-[color-mix(in_oklab,var(--color-status-soon)_20%,white_80%)]';
     case 'closed':
-      return 'bg-[var(--color-status-closed)] text-[var(--color-accent-foreground)]';
+      return 'bg-status-closed/30 text-[color-mix(in_oklab,var(--color-status-closed)_20%,white_80%)]';
     default:
-      return 'bg-[var(--color-border-default)] text-foreground-primary';
+      return 'bg-border-default/30 text-[color-mix(in_oklab,var(--color-primary-foreground)_20%,white_80%)]';
   }
 }
 
@@ -54,5 +54,6 @@ export function statusColor(status) {
 export function computeEventMeta(locale, event, dict) {
   const dateText = formatDayMonth(locale, event.date_iso);
   if (dateText && event.status !== 'closed') return dateText;
+  if (!dateText) return null;
   return statusLabel(event.status, dict);
 }

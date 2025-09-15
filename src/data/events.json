@@ -5,9 +5,12 @@
     "title_en": "Training Registration Opens",
     "date_iso": "2025-10-05",
     "status": "soon",
-    "description_ar": "سجّل الآن لتبدأ رحلة التدريب.",
-    "description_en": "Register now to start the training journey.",
-    "cta_url": null
+    "description_ar": "بدء التسجيل للبرنامج الرسمي استعدادًا لـ ECPC. تركيز عملي على الخوارزميات وهياكل البيانات وحل المسائل بزمن محدد مع بناء عادات العمل الجماعي. سيتم نشر الجدول وخطوات الانضمام عبر قنواتنا—سجّل مبكرًا لضمان مقعدك.",
+    "description_en": "Registration opens for the official training program toward ECPC. Hands‑on focus on algorithms, data structures, and timed problem‑solving while building strong teamwork habits. Final schedule and joining steps will be posted on our channels—register early to secure your spot.",
+    "cta_url": null,
+    "action": null,
+    "label_ar": "تفاصيل",
+    "label_en": "Details"
   },
   {
     "id": "training-starts",
@@ -15,9 +18,12 @@
     "title_en": "Training Starts",
     "date_iso": "2025-10-15",
     "status": "soon",
-    "description_ar": "انطلاق الجلسات الأولى.",
-    "description_en": "First sessions kick off.",
-    "cta_url": null
+    "description_ar": "تنطلق الجلسات الأولى بتطبيق عملي مكثف على الخوارزميات وهياكل البيانات وتمارين تحت ضغط الوقت. إرشاد من مدرّبين لمساعدتك على تطوير أسلوب حل منهجي والعمل ضمن فريق.",
+    "description_en": "Kickoff sessions begin with intensive, practical work on algorithms, data structures, and timed problem‑solving. Mentors provide guidance to build a systematic approach and effective teamwork.",
+    "cta_url": null,
+    "action": null,
+    "label_ar": "تفاصيل",
+    "label_en": "Details"
   },
   {
     "id": "ecpc-reg",
@@ -25,8 +31,11 @@
     "title_en": "ECPC Registration Opens",
     "date_iso": null,
     "status": "soon",
-    "description_ar": "تابعنا للمزيد من التفاصيل.",
-    "description_en": "Stay tuned for details.",
-    "cta_url": null
+    "description_ar": "قريبًا يبدأ تسجيل الفرق للمسابقة المصرية للبرمجة الجامعية (ECPC)—بوابتك إلى ACPC ثم نهائيات ICPC. فريق من ثلاثة طلاب يتعاون على حل مسائل خوارزمية تحت ضغط الوقت. تابع قنواتنا لمواعيد وخطوات التسجيل.",
+    "description_en": "Team registration for the Egyptian Collegiate Programming Contest (ECPC) opens soon—the gateway to ACPC and the ICPC World Finals. Teams of three collaborate to solve algorithmic problems under time pressure. Watch our channels for dates and registration steps.",
+    "cta_url": null,
+    "action": null,
+    "label_ar": "تفاصيل",
+    "label_en": "Details"
   }
 ]

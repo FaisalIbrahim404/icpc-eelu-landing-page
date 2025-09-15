@@ -6,14 +6,14 @@ const { lang = 'ar', dict } = Astro.props;
 const top = events.slice(0, 5);
 ---
 
-<section id="الفعاليات" class="mx-auto max-w-screen-xl px-4 py-[var(--space-6)]">
-  <h2 class="leading-[var(--leading-snug)] font-semibold text-[var(--text-h2)]">
+<section id="الفعاليات" class="flex max-w-screen-xl flex-col items-start justify-start gap-6 py-24">
+  <h2 class="text-h2 leading-snug font-semibold">
     {lang === 'ar' ? 'الفعاليات والمواعيد القادمة' : 'Next Deadlines & Events'}
   </h2>
-  <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {top.map((e) => <EventCard lang={lang} event={e} dict={dict} />)}
   </div>
-  <div class="mt-6">
+  <div class="">
     <a href="#" class="text-link underline-offset-2 hover:underline"
       >{lang === 'ar' ? 'الجدول الزمني الكامل (قريباً)' : 'Full timeline (soon)'}</a
     >
